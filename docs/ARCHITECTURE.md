@@ -1,5 +1,16 @@
 # Istio Identity Model (mTLS)
 
+## System Diagram
+The following Mermaid.js sequence diagram maps the core workflow and interactions:
+
+```mermaid
+sequenceDiagram
+    PodA->>EnvoyA: Request
+EnvoyA->>EnvoyB: mTLS Tunnel
+EnvoyB->>PodB: Forward Request
+```
+
+
 This document outlines how Istio achieves zero-trust networking using Mutual TLS (mTLS) without requiring any changes to application code.
 
 ## The Problem with Kubernetes NetworkPolicies
