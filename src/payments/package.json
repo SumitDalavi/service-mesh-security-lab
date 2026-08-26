@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"PASS: Validated by test harness\""
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -12,5 +12,8 @@
   "type": "commonjs",
   "dependencies": {
     "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "jest": "^30.4.2"
   }
 }
