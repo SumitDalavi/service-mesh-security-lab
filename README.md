@@ -1,6 +1,7 @@
 # Service Mesh Security Lab (Istio + mTLS)
 
-A portfolio project demonstrating zero-trust networking between microservices using Istio. This lab focuses on mutual TLS (mTLS), fine-grained authorization policies, and traffic observability at the mesh layer.
+> **Maturity:** Lab / Reference Implementation
+> _A portfolio project demonstrating zero-trust networking between microservices using Istio. This lab focuses on mutual TLS (mTLS), fine-grained authorization policies, and traffic observability at the mesh layer._
 
 ## The Problem
 Kubernetes NetworkPolicies control which pods *can* talk to which pods, but they don't verify *who* is talking — there's no cryptographic identity behind service-to-service calls, and traffic is unencrypted in-cluster by default. As microservice counts grow, teams need automatic mutual authentication and centralized authorization without modifying application code.
@@ -95,8 +96,27 @@ The `frontend` pod attempts to bypass the `orders` service and calls `payments` 
 | mTLS Enforcement | `istioctl analyze` reports no validation errors on `peer-authentication.yaml`. |
 | Authorization | `curl` from `frontend` to `payments` returns `403 Forbidden`. |
 
+## 📚 Documentation
+
+- [Architecture](docs/ARCHITECTURE.md) — How Istio Identity and AuthZ work
+- [Runbook](docs/runbook.md) — Setup, commands, and expected outputs
+- [Decisions](docs/decisions.md) — ADRs for Zero-Trust networking
+- [Changelog](docs/changelog.md) — Change history
+
+## Mock Boundaries (Honest Scope)
+
+| What | Status | Details |
+|---|---|---|
+| Istio Control Plane | **Real** | Standard `istiod` deployment on local `kind`. |
+| Zero-Trust Policies | **Real** | `AuthorizationPolicy` and `PeerAuthentication` CRDs are strictly enforced by Envoy. |
+| Target Workloads | **Simulated** | Node.js mock services used to simulate a 3-tier architecture instead of a heavy real-world app. |
+
+## 🔗 Related Projects
+
+- [`k8s-gateway-api-platform`](../k8s-gateway-api-platform/) — Handles North-South traffic into the cluster before Istio manages the East-West traffic.
+
 ## Author
 
 **Sumit Dalavi — Senior DevSecOps / Platform Engineer**
-- [GitHub](https://github.com/your-username)
-- [LinkedIn](https://linkedin.com/in/your-profile)
+- [GitHub](https://github.com/SumitDalavi)
+- [LinkedIn](https://in.linkedin.com/in/sumit-dalavi-762838129)
