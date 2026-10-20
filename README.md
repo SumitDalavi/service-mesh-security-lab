@@ -1,11 +1,13 @@
 > **NOTE:** This repository is an archival lab or partial prototype. It is not actively maintained and should not be used as a reference for production-grade deployments or performance benchmarks.
 
-
 # Service Mesh Security Lab (Istio + mTLS)
 
-[![Release](https://img.shields.io/github/v/release/SumitDalavi/service-mesh-security-lab)](https://github.com/SumitDalavi/service-mesh-security-lab/releases)
+[![CI Pipeline](https://github.com/SumitDalavi/service-mesh-security-lab/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/SumitDalavi/service-mesh-security-lab/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/SumitDalavi/service-mesh-security-lab?color=0969da&label=release&logo=github)](https://github.com/SumitDalavi/service-mesh-security-lab/releases)
 [![Release Workflow](https://github.com/SumitDalavi/service-mesh-security-lab/actions/workflows/release.yml/badge.svg)](https://github.com/SumitDalavi/service-mesh-security-lab/actions/workflows/release.yml)
-
+[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)](https://www.python.org)
+[![SBOM](https://img.shields.io/badge/SBOM-SPDX%202.3-blueviolet?logo=spdx)](https://github.com/SumitDalavi/service-mesh-security-lab/releases/tag/v0.2.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 > **Maturity:** Lab / Reference Implementation
 > _A portfolio project demonstrating zero-trust networking between microservices using Istio. This lab focuses on mutual TLS (mTLS), fine-grained authorization policies, and traffic observability at the mesh layer._
@@ -120,7 +122,6 @@ Deploy into a local Kind cluster with Istio service mesh enabled.
 ### Tier 3: Production Zero-Trust Mesh Deployment
 Enforce STRICT mTLS across multi-tenant production Kubernetes namespaces.
 - **Distribution:** Release assets and verified SPDX SBOM available on [GitHub Releases](https://github.com/SumitDalavi/service-mesh-security-lab/releases).
-
 
 ## 📚 Documentation
 
