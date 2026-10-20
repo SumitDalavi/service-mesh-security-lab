@@ -103,29 +103,24 @@ The `frontend` pod attempts to bypass the `orders` service and calls `payments` 
 | mTLS Enforcement | `istioctl analyze` reports no validation errors on `peer-authentication.yaml`. |
 | Authorization | `curl` from `frontend` to `payments` returns `403 Forbidden`. |
 
-## 🚀 Progressive Credential Loading & Execution Tiers
+## 🛠️ Verification & Deployment Tiers
 
-This project implements **Progressive Credential Loading (PCL)**, allowing it to run immediately out-of-the-box without external dependencies while seamlessly upgrading as credentials are provided.
+This service mesh security lab supports progressive validation from local mock services to cluster-wide strict mTLS enforcement.
 
-### Tier 1: Zero-Config Mock Mode (Default)
-Ideal for CI, testing, and rapid local evaluation.
-- **Execution:** Run with default configuration (`cp .env.example .env`). Zero API keys, databases, or cloud credentials required.
-- **Fallback Behavior:** In-memory caches, deterministic offline heuristics, mock vector embeddings, and local mock storage are automatically used.
-- **Health Verification:** Endpoints report `{"mode": "mock"}` for unconfigured dependencies.
+### Tier 1: Local Mock Service Verification (Default)
+Run client and service components locally in mock mode without Istio sidecars.
+- **Execution:** Start services with default configuration: `npm test` or local Docker.
+- **Behavior:** Demonstrates application communication and protocol handling without service mesh dependencies.
 
-### Tier 2: Local Development with Live Services
-Connect specific external services while keeping others mocked.
-- **Execution:** Provide credentials in `.env` for the services you want active (e.g., `ORDERS_URL, PAYMENTS_URL`).
-- **Progressive Upgrade:** The runtime inspects environment variables on boot and dynamically promotes only configured modules to live mode.
-- **Safe Fallback:** Any missing credentials automatically remain on mock fallbacks with no crashes or missing service errors.
+### Tier 2: Local Istio / Kind Mesh Testing
+Deploy into a local Kind cluster with Istio service mesh enabled.
+- **Execution:** `kubectl apply -f istio/` to enable `PeerAuthentication` and sidecar injection.
+- **Behavior:** Verifies automatic mTLS certificate exchange, traffic authorization policies, and telemetry.
 
-### Tier 3: Production Hardened
-Enterprise deployment with production-grade backends, security scans, and container distributions.
-- **Release Distribution:** Download standalone release bundle and verified checksums:
-  ```bash
-  gh release download v0.2.0 --repo SumitDalavi/service-mesh-security-lab
-  ```
-- **Integrity & Security:** Checksums and SPDX SBOM (`sbom.spdx.json`) available on [GitHub Releases](https://github.com/SumitDalavi/service-mesh-security-lab/releases).
+### Tier 3: Production Zero-Trust Mesh Deployment
+Enforce STRICT mTLS across multi-tenant production Kubernetes namespaces.
+- **Distribution:** Release assets and verified SPDX SBOM available on [GitHub Releases](https://github.com/SumitDalavi/service-mesh-security-lab/releases).
+
 
 ## 📚 Documentation
 
