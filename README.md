@@ -7,8 +7,7 @@
 [![SBOM](https://img.shields.io/badge/SBOM-SPDX%202.3-blueviolet?logo=spdx)](https://github.com/SumitDalavi/service-mesh-security-lab/releases/tag/v0.2.0)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-> **Maturity:** Lab / Reference Implementation
-> _A portfolio project demonstrating zero-trust networking between microservices using Istio. This lab focuses on mutual TLS (mTLS), fine-grained authorization policies, and traffic observability at the mesh layer._
+> Zero-trust networking and service mesh architecture using Istio — enforcing mutual TLS (mTLS), identity-based AuthorizationPolicies, and mesh-layer observability.
 
 ## The Problem
 Kubernetes NetworkPolicies control which pods *can* talk to which pods, but they don't verify *who* is talking — there's no cryptographic identity behind service-to-service calls, and traffic is unencrypted in-cluster by default. As microservice counts grow, teams need automatic mutual authentication and centralized authorization without modifying application code.
